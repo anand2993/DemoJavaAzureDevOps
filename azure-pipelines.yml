@@ -21,10 +21,10 @@ stages:
       vmImage: ubuntu-latest
     steps:
     - task: JavaToolInstaller@0
-    inputs:
-      versionSpec: '17'
-      jdkArchitectureOption: 'x64'
-      jdkSourceOption: 'PreInstalled'
+      inputs:
+          versionSpec: '17'
+          jdkArchitectureOption: 'x64'
+          jdkSourceOption: 'PreInstalled'
     - task: Docker@2
       displayName: Build an image
       inputs:
