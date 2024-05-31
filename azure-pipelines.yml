@@ -26,15 +26,9 @@ stages:
           jdkArchitectureOption: 'x64'
           jdkSourceOption: 'PreInstalled'
     - task: Docker@2
-      displayName: Build an image
-      inputs:
-        command: build
-        dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
-        tags: |
-          $(tag)
-
-    - task: Docker@2
       inputs:
         containerRegistry: 'DockerConnection'
-        repository: $(imageName)
-        command: 'push'
+        repository: 'anand2993/javamavenimage'
+        command: 'buildAndPush'
+        Dockerfile: '**/Dockerfile'
+
