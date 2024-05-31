@@ -36,5 +36,5 @@ stages:
     - task: Docker@2
       inputs:
         containerRegistry: 'DockerConnection'
-        repository: 'anand2993/javamavenimage'
+        repository: $(imageName)
         command: 'push'
