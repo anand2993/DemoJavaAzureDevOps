@@ -14,14 +14,9 @@ stages:
         pool:
           vmImage: ubuntu-latest
         steps:
-          - task: UseJava@1
-            inputs:
-              versionSpec: 17.x
-              jdkArchitectureOption: x64
-              jdkSourceOption: PreInstalled
-              jdkDestinationDirectory: $(Agent.ToolsDirectory)/Java_17_x64
+          
           - script: |
-              echo "Maven version:"
+              echo 'Maven version:'
                mvn -version
             displayName: Show Maven version
           - task: SonarCloudPrepare@1
@@ -45,11 +40,11 @@ stages:
               mvn sonar:sonar -Dsonar.projectKey=$(sonarProjectKey) -Dsonar.organization=$(sonarOrganization) -Dsonar.host.url=$(sonarHostUrl) -Dsonar.login=$(sonarLogin)
             displayName: Run SonarCloud Analysis
           - task: SonarCloudPublish@1
-            inputs: null
-            pollingTimeoutSec: "300"
+            inputs:
+             pollingTimeoutSec: '300'
           - task: JavaToolInstaller@0
             inputs:
-              versionSpec: "17"
+              versionSpec: '17'
               jdkArchitectureOption: x64
               jdkSourceOption: PreInstalled
           - task: Docker@2
@@ -57,4 +52,4 @@ stages:
               containerRegistry: DockerConnection
               repository: anand2993/javamavenimage
               command: buildAndPush
-              Dockerfile: "**/Dockerfile"
+              Dockerfile: '**/Dockerfile'
