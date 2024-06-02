@@ -21,7 +21,7 @@ stages:
             displayName: Show Maven version
           - task: SonarCloudPrepare@1
             inputs:
-              SonarCloud: SonarCloud Service Connection
+              SonarCloud: SonarConnection
               organization: $(sonarOrganization)
               scannerMode: CLI
               configMode: manual
