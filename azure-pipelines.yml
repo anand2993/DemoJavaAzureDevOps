@@ -14,7 +14,11 @@ stages:
         pool:
           vmImage: ubuntu-latest
         steps:
-          
+          - task: JavaToolInstaller@0
+            inputs:
+              versionSpec: '17'
+              jdkArchitectureOption: x64
+              jdkSourceOption: PreInstalled 
           - script: |
               echo 'Maven version:'
                mvn -version
@@ -42,11 +46,7 @@ stages:
           - task: SonarCloudPublish@1
             inputs:
              pollingTimeoutSec: '300'
-          - task: JavaToolInstaller@0
-            inputs:
-              versionSpec: '17'
-              jdkArchitectureOption: x64
-              jdkSourceOption: PreInstalled
+          
           - task: Docker@2
             inputs:
               containerRegistry: DockerConnection
