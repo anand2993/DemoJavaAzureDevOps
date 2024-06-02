@@ -32,3 +32,6 @@ stages:
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
 
+    - task: SonarCloudAnalyze@2
+      inputs:
+        jdkversion: 'JAVA_HOME_17_X64'
