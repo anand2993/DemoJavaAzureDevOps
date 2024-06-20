@@ -9,18 +9,18 @@
   tasks:
     - name: Stop the Docker container
       community.docker.docker_container:
-        name: $dockerContainerName
+        name: {{ dockerContainerName }}
         state: stopped
 
     - name: Remove the Docker container
       community.docker.docker_container:
-        name: $dockerContainerName
+        name: {{ dockerContainerName }}
         state: absent
 
     - name: Recreate the Docker container with new configuration
       community.docker.docker_container:
-        name: $dockerContainerName
-        image: $dockerImageName:78
+        name: {{ dockerContainerName }}
+        image: {{ dockerImageName }}:78
         state: started
         env:
           ENV_VAR1: new_value1
