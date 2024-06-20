@@ -1,0 +1,27 @@
+---
+- name: Update Docker container configuration
+  become: yes
+  collections:
+    - community.docker
+
+  tasks:
+    - name: Stop the Docker container
+      community.docker.docker_container:
+        name: my_container
+        state: stopped
+
+    - name: Remove the Docker container
+      community.docker.docker_container:
+        name: my_container
+        state: absent
+
+    - name: Recreate the Docker container with new configuration
+      community.docker.docker_container:
+        name: my_container
+        image: my_image:latest
+        state: started
+        env:
+          ENV_VAR1: new_value1
+          ENV_VAR2: new_value2
+        ports:
+          - "8080:80"
