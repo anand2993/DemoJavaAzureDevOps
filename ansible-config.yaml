@@ -4,8 +4,8 @@
   collections:
     - community.docker
   vars:
-     dockerContainerName: '{#dockerContainerName}'
-     dockerImageName: '{#dockerImageName}'
+     dockerContainerName: _dockerContainerName_
+     dockerImageName: _dockerImageName_
   tasks:
     - name: Stop the Docker container
       community.docker.docker_container:
