@@ -3,7 +3,9 @@
   become: yes
   collections:
     - community.docker
-
+  vars:
+     dockerContainerName: '{#dockerContainerName}'
+     dockerImageName: '{#dockerImageName}'
   tasks:
     - name: Stop the Docker container
       community.docker.docker_container:
